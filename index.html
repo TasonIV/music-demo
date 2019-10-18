@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no, maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <title>音乐播放器</title>
+</head>
+
+<body>
+    <audio id="audio" src="" preload></audio>
+    <div id="music">
+        <!-- 背景 -->
+        <div class="bg-box">
+            <div class="bg"></div>
+            <div class="cover"></div>
+        </div>
+
+        <!-- 头部搜索 -->
+        <header>
+            <div class="search-inp"></div>
+            <div class="search-icon"></div>
+        </header>
+
+        <!-- 主体内容 -->
+        <!-- data-title  0:本地歌曲  1：最近播放  2：我的收藏 -->
+        <main>
+            <div class="content content1" data-title="0">
+                <span class="content-name">本地歌曲</span>
+                <div class="num-box">
+                    <span class="content-num local-song"></span>
+                    <i></i>
+                </div>
+            </div>
+            <div class="content content2" data-title="1">
+                <span class="content-name">最近播放</span>
+                <div class="num-box">
+                    <span class="content-num">0</span>
+                    <i></i>
+                </div>
+            </div>
+            <div class="content content3" data-title="2">
+                <span class="content-name">我的收藏</span>
+                <div class="num-box">
+                    <span class="content-num">0</span>
+                    <i></i>
+                </div>
+            </div>
+        </main>
+
+        <!-- 底部播放栏 -->
+        <footer>
+            <!-- 时间、歌名、歌手 -->
+            <div class="play-message clearfix">
+                <span class="fl ctime"></span>
+                <span class="singer">
+                    <span></span>
+                    <span class="singer-style"></span>
+                </span>
+                <span class="fr dtime"></span>
+            </div>
+            <!-- 进度条 -->
+            <div class="progress">
+                <div class="pro-active"></div>
+                <div class="pro-circle m-mask">
+                    <div class="red-circle"></div>
+                </div>
+                <!-- 绑定事件层 -->
+                <div class="event-progress m-progress m-event-progress"></div>
+            </div>
+            <!-- 内容层 -->
+            <div class="control clearfix">
+                <span class="con-img fl">
+                    <img src="./image/bg/05.jpg" alt="">
+                </span>
+                <span class="con-middle fl">
+                    <div class="middle-left m-left fl"></div>
+                    <div class="middle-middle m-middle fl"></div>
+                    <div class="middle-right m-right fl"></div>
+                </span>
+                <span class="con-right fr">
+                    <div class="like fl"></div>
+                    <div class="speed fl">倍速1</div>
+                    <div class="type fl m-type" data-min="1" data-max="3" data-value='2'></div>
+                    <!-- 1:单曲循环   2：列表循环   3：随机播放 -->
+                </span>
+            </div>
+        </footer>
+
+
+        <!-- 歌曲列表页 -->
+        <div class="songList-box songList" data-title="0" style="display: none">
+            <div class="list-header">
+                <i></i>
+                <span>本地歌曲</span>
+            </div>
+            <div class="ul-box">
+                <ul id="current-list" class="list-ul">
+
+                </ul>
+            </div>
+        </div>
+
+
+        <!-- 播放页 -->
+        <div class="play-box" style="display: none">
+            <div class="play-header">
+                <i></i>
+                <div class="play-song">芒种</div>
+                <div class="play-singer">音阙诗听/赵方婧</div>
+            </div>
+
+            <!-- 旋转图片 -->
+            <div class="play-content" style="display: none">
+                <div class="content-box">
+                    <div class="play-img">
+                        <img class="m-img" src="./image/bg/05.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 歌词 -->
+            <div class="lyric-box">
+                <div class="lyric-p">
+                                     
+                </div>
+            </div>
+
+            <!-- 播放页控制区 -->
+            <div class="play-control">
+                <!-- 时间、歌名、歌手 -->
+                <div class="play-message clearfix">
+                    <span class="fl ctime"></span>
+                    <span class="fr dtime"></span>
+                </div>
+                <!-- 进度条 -->
+                <div class="progress">
+                    <div class="pro-active"></div>
+                    <div class="pro-circle m-mask">
+                        <div class="red-circle"></div>
+                    </div>
+                    <!-- 绑定事件层 -->
+                    <div class="event-progress m-progress m-event-progress"></div>
+                </div>
+
+                <!-- 控制按钮 -->
+                <div class="control clearfix">
+                    <span class="con-middle play-con-middle fl">
+                        <div class="middle-left m-left fl"></div>
+                        <div class="middle-middle m-middle fl"></div>
+                        <div class="middle-right m-right fl"></div>
+                    </span>
+                    <span class="con-right play-con-right fr">
+                        <div class="like fl"></div>
+                        <div class="speed fl">倍速1</div>
+                        <div class="type m-type fl" data-min="1" data-max="3" data-value='2'></div>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 空页面 -->
+        <div class="empty-box songList" style="display: none">
+            <div class="list-header">
+                <i></i>
+                <span>最近播放</span>
+            </div>
+            <div class="empty-word">
+                列表空空如也...
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/rem.js"></script>
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+
+</html>
